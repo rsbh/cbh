@@ -9,3 +9,11 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+I have created `createHash` helper function in file local scope. As we are creating hash in 2 places now, it will create problem in maintaining because if we make change in hash generation in future and forget to update in 1 place, then this will create problem. It is ideal to move hash generation at 1 place.
+
+I also created a helper to get `partitionKey` from event. The logic to get `partitionKey` from event is not related to other part of function and can be seperated from main function.
+
+Same with generating `partitionKey` from event.
+
+I also avoid mutating the `candidate` variable.
